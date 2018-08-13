@@ -40,6 +40,7 @@ public class EditorActivity extends AppCompatActivity {
         // display the existing notes text
         else {
             action = Intent.ACTION_EDIT;
+            setTitle("");
             noteFilter = DBOpenHelper.NOTE_ID + "=" + uri.getLastPathSegment();
 
             // get all columns for this existing note

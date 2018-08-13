@@ -13,7 +13,6 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -33,7 +32,9 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTitle(getString(R.string.main_title));
         setContentView(R.layout.activity_main);
+
 
         // displays a single text view
         cursorAdapter = new NotesCursorAdapter(this,null, 0);
@@ -74,9 +75,6 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         switch(id) {
-            case R.id.action_create_sample:
-                insertSampleData();
-                break;
             case R.id.action_delete_all:
                 deleteAllNotes();
                 break;
@@ -115,16 +113,6 @@ public class MainActivity extends AppCompatActivity
                 .setNegativeButton(getString(android.R.string.no),
                         dialogClickListener)
                 .show();
-    }
-
-
-    private void insertSampleData() {
-        insertNote("Simple note");
-        insertNote("Multi-line\nnote");
-        insertNote("Very long note with a lot of text on the screen " +
-                "that exceeds width");
-        restartLoader();
-
     }
 
     private void restartLoader() {
